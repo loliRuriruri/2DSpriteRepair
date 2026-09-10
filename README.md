@@ -15,7 +15,7 @@ SpriteRepair.bat
 수동 실행:
 
 ```bat
-cd /d C:\TEST\MikuChat-Lab\projects\SpriteRepair
+cd /d D:\test\SpriteRepair
 .venv\Scripts\python.exe server.py
 ```
 
