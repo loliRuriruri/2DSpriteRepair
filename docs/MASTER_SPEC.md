@@ -1,0 +1,2566 @@
+<USER_REQUEST>
+아래 내용을 **Grok Build / Codex / Antigravity 같은 코딩 에이전트에 그대로 전달할 수 있는 마스터 지시서** 형태로 정리했습니다. 목표는 단순한 스프라이트시트→GIF 변환기가 아니라, **Aseprite급 편집 UX + AI 자동 보정 기능을 결합한 Sprite Animation Repair Studio**입니다.
+
+# AI Sprite Animation Repair Studio — 상세 개발 지시서
+
+## 0. 프로젝트 한 줄 정의
+
+**AI 이미지 생성기로 만든 불완전한 스프라이트시트를 자동으로 프레임 분리·복구·정렬하고, Aseprite 수준의 타임라인/레이어/셀/피벗/Onion Skin 편집 기능으로 사람이 마지막 부분을 보정한 뒤 게임용 SpriteSheet, PNG Sequence, GIF, APNG, WebP와 메타데이터로 출력하는 전문 애니메이션 제작 도구를 만든다.**
+
+기존 기반 저장소는 우선 다음 프로젝트를 분석한다.
+
+```text
+NO6KIKO/gorest-2d-animation-spritesheet-generator
+```
+
+기존 구조와 구현 기능을 최대한 재사용하며, 불필요하게 프로젝트 전체를 재작성하지 않는다.
+
+---
+
+# 1. 프로젝트의 핵심 문제
+
+현재 AI 이미지 생성 모델로 4×4, 8×4 등의 SpriteSheet를 만들면 겉보기에는 규칙적인 Grid처럼 보이지만 실제 데이터는 그렇지 않은 경우가 많다.
+
+대표적인 문제는 다음과 같다.
+
+* 프레임별 캐릭터 발 위치가 다름
+* 캐릭터의 Root 위치가 움직임
+* GIF로 만들면 캐릭터가 위아래/좌우로 흔들림
+* 머리카락, 옷, 무기, 공격 VFX가 인접 Cell 영역까지 넘어감
+* Grid Cell 기준으로 자르면 공격 Effect가 잘림
+* Crop 영역을 넓히면 옆 프레임 캐릭터가 같이 들어옴
+* Character와 VFX의 Bounding Box가 혼합됨
+* 이펙트가 커질수록 Character Center 계산이 왜곡됨
+* 프레임마다 캐릭터 자체 Scale이 조금씩 바뀜
+* Animation pose 흐름이 자연스럽지 않은 프레임이 섞임
+* GIF 변환 시 이전 프레임 VFX 잔상이 남음
+* AI SpriteSheet가 실제로 완벽한 균등 Grid가 아닐 수 있음
+
+따라서 이 프로젝트에서는 다음 세 가지 원칙을 절대 깨지 않는다.
+
+```text
+Grid != 실제 Frame Boundary
+
+Character Anchor != Bounding Box Center
+
+Character Bounding Box != VFX Bounding Box
+```
+
+이 세 원칙이 전체 아키텍처의 기반이다.
+
+---
+
+# 2. 최종 사용자 경험
+
+최종 Simple Mode는 다음 정도로 간단해야 한다.
+
+```text
+SpriteSheet PNG Drag & Drop
+        ↓
+Auto Grid Detection
+        ↓
+Frame Detection
+        ↓
+Character / VFX Analysis
+        ↓
+Foot Anchor Detection
+        ↓
+Auto Align
+        ↓
+Overflow Repair
+        ↓
+Animation QA
+        ↓
+Preview
+        ↓
+Export
+```
+
+사용자가 해야 할 일은 이상적으로 다음 정도다.
+
+```text
+1. 이미지 넣기
+2. Auto Repair 누르기
+3. 문제가 있는 프레임 2~3개만 확인
+4. Anchor나 Mask 약간 수정
+5. Export
+```
+
+전문 사용자는 Pro Mode에서 Aseprite에 가까운 편집 환경을 사용할 수 있어야 한다.
+
+---
+
+# 3. 프로젝트 포지셔닝
+
+Aseprite 전체를 복제하는 것이 목적이 아니다.
+
+목표는:
+
+```text
+Aseprite의 Animation Editor 핵심 기능
++
+AI SpriteSheet Repair
++
+게임 Asset 자동 Export
+```
+
+이다.
+
+Aseprite에서 참고할 기능은 독립적으로 구현한다.
+
+Aseprite의 소스코드를 직접 복사하거나 재사용하지 않는다. 기능 개념, UX, 데이터 모델만 참고한다.
+
+특히 다음 부분은 적극적으로 참고한다.
+
+```text
+Timeline
+Frames
+Layers
+Cels
+Tags
+Slices
+Pivot
+Onion Skin
+Animation Preview
+Frame Duration
+Linked Cels
+SpriteSheet Import/Export
+Pixel Editing
+Undo/Redo
+```
+
+그러나 Tilemap 등 이 프로젝트 목적과 관계없는 기능은 우선순위에서 제외한다.
+
+---
+
+# 4. 개발 시작 전 반드시 Repository Audit 수행
+
+코드를 바로 수정하지 않는다.
+
+현재 저장소를 먼저 전체적으로 분석한다.
+
+다음 내용을 확인한다.
+
+```text
+현재 frontend 구조
+현재 backend 구조
+이미지 처리 라이브러리
+SpriteSheet import 구조
+Frame 데이터 구조
+Grid detection 여부
+Frame extraction 여부
+Anchor normalization 여부
+GIF export 여부
+PNG export 여부
+metadata 구조
+Canvas rendering 구조
+Timeline 구현 여부
+Undo/Redo 여부
+테스트 구조
+```
+
+그리고 먼저 다음 보고서를 작성한다.
+
+```text
+docs/CURRENT_ARCHITECTURE.md
+docs/SPRITE_REPAIR_IMPLEMENTATION_PLAN.md
+```
+
+내용에는 최소 다음이 포함되어야 한다.
+
+```text
+현재 구조
+재사용 가능한 모듈
+삭제/교체가 필요한 코드
+데이터 모델 문제점
+새로 필요한 모듈
+UI 변경 계획
+파일별 수정 계획
+테스트 계획
+Phase별 개발 계획
+```
+
+이 분석 후에 실제 코딩을 시작한다.
+
+---
+
+# 5. 기존 구조를 함부로 갈아엎지 말 것
+
+현재 프로젝트가 React라면 React를 유지하고, Python Backend가 있다면 가능한 범위에서 유지한다.
+
+새 프레임워크를 쓰는 것이 명확하게 필요한 경우가 아니면 다음과 같은 행동을 하지 않는다.
+
+```text
+React → 다른 프레임워크 전체 교체
+Python → Rust 전체 교체
+현재 UI 전체 삭제
+현재 export pipeline 전부 재작성
+```
+
+기존 동작을 보존하면서 Incremental Refactoring을 수행한다.
+
+---
+
+# 6. 권장 전체 아키텍처
+
+최종 구조는 대략 다음과 같이 한다.
+
+```text
+                Sprite Repair Studio
+
+                       UI
+                        │
+        ┌───────────────┼───────────────┐
+        │               │               │
+      Canvas         Timeline         Preview
+        │               │               │
+        └───────────────┼───────────────┘
+                        │
+                    Project State
+                        │
+                Sprite Data Model
+                        │
+       ┌────────────────┼────────────────┐
+       │                │                │
+   CV Engine       AI Assist        Export Engine
+       │                │                │
+  OpenCV/Pillow    Kimi K3       GIF/APNG/WebP
+       │
+ Grid / BBox /
+ Anchor / Mask
+```
+
+AI가 프로그램의 필수 dependency가 되어서는 안 된다.
+
+기본 프로그램은 AI API가 없어도 작동해야 한다.
+
+---
+
+# 7. 핵심 데이터 모델부터 재설계
+
+현재 프로젝트가 단순히 다음 구조라면:
+
+```text
+frames = [
+  frame1.png,
+  frame2.png,
+  frame3.png
+]
+```
+
+UI를 먼저 확장하지 말고 Data Model부터 개선한다.
+
+권장 구조:
+
+```text
+Project
+ ├─ Sprite
+ │
+ ├─ Frames[]
+ │
+ ├─ Layers[]
+ │
+ ├─ Cels[]
+ │
+ ├─ Tags[]
+ │
+ ├─ Slices[]
+ │
+ ├─ Anchors[]
+ │
+ ├─ Masks[]
+ │
+ ├─ Diagnostics[]
+ │
+ └─ ExportSettings
+```
+
+---
+
+# 8. Frame 데이터
+
+각 Frame에는 최소 다음 정보가 있어야 한다.
+
+```json
+{
+  "id": 7,
+  "index": 7,
+  "duration_ms": 83,
+
+  "nominal_rect": {
+    "x": 300,
+    "y": 300,
+    "width": 300,
+    "height": 300
+  },
+
+  "content_rect": {
+    "x": 281,
+    "y": 287,
+    "width": 396,
+    "height": 318
+  },
+
+  "character_bbox": {
+    "x": 23,
+    "y": 18,
+    "width": 132,
+    "height": 271
+  },
+
+  "effect_bbox": {
+    "x": 121,
+    "y": 61,
+    "width": 263,
+    "height": 153
+  },
+
+  "combined_bbox": {
+    "x": 23,
+    "y": 18,
+    "width": 361,
+    "height": 271
+  },
+
+  "anchor": {
+    "x": 91,
+    "y": 283
+  },
+
+  "offset": {
+    "x": -3,
+    "y": 2
+  },
+
+  "diagnostics": {
+    "jitter": false,
+    "scale_anomaly": false,
+    "overflow": true
+  }
+}
+```
+
+실제 코드 구조는 기존 프로젝트에 맞게 조정 가능하다.
+
+---
+
+# 9. Aseprite식 Layer + Cel 구조
+
+Layer와 Frame을 분리한다.
+
+예:
+
+```text
+Layers
+
+Character
+VFX
+Shadow
+Correction
+Mask
+Reference
+```
+
+Cel은 다음 개념이다.
+
+```text
+Cel = Layer × Frame
+```
+
+예:
+
+```text
+Frame 05
+ ├ Character Cel
+ ├ VFX Cel
+ ├ Shadow Cel
+ └ Correction Cel
+```
+
+Cel은 최소 다음 값을 가진다.
+
+```text
+image
+x
+y
+opacity
+visible
+transform
+linked_cel
+```
+
+이 구조를 사용하면 캐릭터 위치는 유지하면서 VFX만 독립적으로 이동할 수 있다.
+
+---
+
+# 10. Character와 VFX를 반드시 별도 개념으로 관리
+
+다음 세 값을 분리한다.
+
+```text
+Character Bounding Box
+VFX Bounding Box
+Combined Bounding Box
+```
+
+Foot Anchor 계산에는 Character 영역만 사용한다.
+
+다음과 같은 상황에서:
+
+```text
+             ICE EFFECT ──────────────>
+
+      Character
+         O
+        /|\
+        / \
+────────●─────────────────────────────
+```
+
+VFX가 아무리 길어져도 Anchor가 이동하면 안 된다.
+
+---
+
+# 11. Grid Detection
+
+사용자가 직접 Grid를 지정할 수도 있어야 한다.
+
+예:
+
+```text
+Auto
+2×2
+3×3
+4×4
+4×3
+4×5
+8×4
+Custom
+```
+
+Auto Grid Detection에서는 다음을 활용한다.
+
+```text
+foreground density
+alpha distribution
+horizontal projection
+vertical projection
+repeated object centers
+candidate spacing
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ADDITIONAL_METADATA>

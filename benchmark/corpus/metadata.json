@@ -1,0 +1,488 @@
+[
+  {
+    "fixture_id": "gpt_sheet_001",
+    "source_file": "ChatGPT Image 2026년 4월 20일 오후 06_54_33.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 6
+    },
+    "width": 1536,
+    "height": 1024,
+    "created_at": "2026-04-20T18:54:33.633603",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_002",
+    "source_file": "ChatGPT Image 2026년 4월 20일 오후 06_56_51.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1568,
+    "height": 1003,
+    "created_at": "2026-04-20T18:56:51.591999",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_003",
+    "source_file": "ChatGPT Image 2026년 4월 20일 오후 07_34_33.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 5
+    },
+    "width": 1672,
+    "height": 941,
+    "created_at": "2026-04-20T19:34:34.074004",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_004",
+    "source_file": "ChatGPT Image 2026년 8월 30일 오후 11_10_03.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 7
+    },
+    "width": 1536,
+    "height": 1024,
+    "created_at": "2026-08-30T23:10:03.610636",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_005",
+    "source_file": "ChatGPT Image 2026년 9월 10일 오후 03_15_54 (2).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 6,
+      "hlines": 10
+    },
+    "width": 1055,
+    "height": 1491,
+    "created_at": "2026-09-10T15:15:54.767491",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_006",
+    "source_file": "ChatGPT Image 2026년 9월 10일 오후 03_15_54 (3).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 19
+    },
+    "width": 1055,
+    "height": 1491,
+    "created_at": "2026-09-10T15:15:55.212096",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_007",
+    "source_file": "ChatGPT Image 2026년 9월 10일 오후 03_15_55 (4).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 18
+    },
+    "width": 1055,
+    "height": 1491,
+    "created_at": "2026-09-10T15:15:55.704723",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_008",
+    "source_file": "ChatGPT Image 2026년 9월 6일 오후 07_03_18 (3).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 6
+    },
+    "width": 1448,
+    "height": 1086,
+    "created_at": "2026-09-06T19:03:19.320918",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_009",
+    "source_file": "ChatGPT Image 2026년 9월 6일 오후 07_12_20 (4).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "solid",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 4
+    },
+    "width": 1448,
+    "height": 1086,
+    "created_at": "2026-09-06T19:12:21.724163",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_010",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오전 08_44_25.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 6
+    },
+    "width": 1278,
+    "height": 1230,
+    "created_at": "2026-09-09T08:44:26.070038",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_011",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오전 10_36_54 (1).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 9
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T10:36:55.244406",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_012",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오전 10_36_55 (2).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 7
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T10:36:56.491558",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_013",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오전 10_36_56 (3).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 8
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T10:36:56.902150",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_014",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_25_07 (1).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T18:25:08.128689",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_015",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_25_07 (2).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T18:25:08.901348",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_016",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_25_08 (3).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T18:25:10.047026",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_017",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_54 (1).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T18:54:55.728476",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_018",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_55 (2).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T18:54:56.185964",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_019",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_56 (3).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T18:54:56.488219",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_020",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_56 (4).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 4,
+      "hlines": 4
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T18:54:56.717525",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_021",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_15_04 (1).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T19:15:04.564763",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_022",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_15_04 (2).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T19:15:04.786906",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_023",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_15_04 (3).png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 6
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T19:15:05.306787",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_024",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_43_35.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T19:43:37.944669",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_025",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 08_17_18.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T20:17:18.985271",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_026",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 08_19_13.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T20:19:13.720177",
+    "human_review": "PENDING"
+  },
+  {
+    "fixture_id": "gpt_sheet_027",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오후 08_21_14.png",
+    "generator": "GPT image generation (ChatGPT)",
+    "prompt_class": "unknown",
+    "grid": "4x4",
+    "expected_frames": 16,
+    "background_type": "transparent",
+    "difficulty_tags": [],
+    "detected_grid": {
+      "vlines": 5,
+      "hlines": 5
+    },
+    "width": 1254,
+    "height": 1254,
+    "created_at": "2026-09-09T20:21:15.009913",
+    "human_review": "PENDING"
+  }
+]

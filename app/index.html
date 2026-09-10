@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpriteRepair — AI Sprite Animation Repair Studio</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body class="theme-dark">
+  <div class="studio-root pro-mode" id="studioRoot">
+    
+    <!-- 1. Top Menu Bar -->
+    <header class="studio-menu-bar">
+      <div class="menu-brand">
+        <span class="logo-icon">✨</span>
+        <strong>SpriteRepair</strong>
+        <span class="version-tag">STUDIO PRO</span>
+      </div>
+
+      <nav class="menu-items">
+        <div class="menu-dropdown">
+          <button type="button" class="menu-trigger">파일 (File)</button>
+          <div class="dropdown-menu">
+            <button type="button" id="menuImport">스프라이트시트 불러오기... (Ctrl+I)</button>
+            <button type="button" id="menuLoadSample">실제 4×4 공격 샘플 불러오기</button>
+            <label class="menu-file-label">
+              프로젝트 열기 (.spriteproject)...
+              <input type="file" id="loadProject" accept=".spriteproject,application/json,.json" style="display:none" />
+            </label>
+            <button type="button" id="btnSaveProject">프로젝트 저장 (Ctrl+S)</button>
+            <div class="menu-divider"></div>
+            <button type="button" id="menuExport">게임 에셋 보내기... (Ctrl+E)</button>
+          </div>
+        </div>
+
+        <div class="menu-dropdown">
+          <button type="button" class="menu-trigger">편집 (Edit)</button>
+          <div class="dropdown-menu">
+            <button type="button" id="btnUndo">실행취소 (Ctrl+Z)</button>
+            <button type="button" id="btnRedo">다시실행 (Ctrl+Y)</button>
+            <div class="menu-divider"></div>
+            <button type="button" id="menuCopyCel">셀 복사 (Ctrl+C)</button>
+            <button type="button" id="menuPasteCel">셀 붙여넣기 (Ctrl+V)</button>
+            <button type="button" id="menuClearCel">셀 지우기 (Delete)</button>
+            <div class="menu-divider"></div>
+            <button type="button" id="menuFlipH">변형: 좌우 반전 (Flip Horizontal)</button>
+            <button type="button" id="menuFlipV">변형: 상하 반전 (Flip Vertical)</button>
+            <button type="button" id="menuRot90">변형: 90도 회전 (Rotate 90°)</button>
+            <div class="menu-divider"></div>
+            <button type="button" id="btnSetRef">현재 프레임을 기준(Ref)으로 지정</button>
+            <button type="button" id="btnAlignRef">기준 프레임 기준 전체 발 고정 정렬</button>
+          </div>
+        </div>
+
+        <div class="menu-dropdown">
+          <button type="button" class="menu-trigger">프레임 (Frame)</button>
+          <div class="dropdown-menu">
+            <button type="button" id="menuNewFrame">새 빈 프레임 삽입 (Alt+N)</button>
+            <button type="button" id="menuDupFrame">현재 프레임 복제</button>
+            <button type="button" id="menuDelFrame">현재 프레임 삭제</button>
+            <div class="menu-divider"></div>
+            <button type="button" id="menuMoveFrameLeft">프레임 왼쪽으로 이동 (Alt+[)</button>
+            <button type="button" id="menuMoveFrameRight">프레임 오른쪽으로 이동 (Alt+])</button>
+            <button type="button" id="menuReverseFrames">프레임 순서 반전 (Reverse Sequence)</button>
+            <div class="menu-divider"></div>
+            <button type="button" id="menuFrameDuration">프레임 재생시간 설정...</button>
+          </div>
+        </div>
+
+        <div class="menu-dropdown">
+          <button type="button" class="menu-trigger">레이어 (Layer)</button>
+          <div class="dropdown-menu">
+            <button type="button" id="menuNewLayer">새 레이어 추가 (Shift+N)</button>
+            <button type="button" id="menuNewLayerGroup">새 레이어 그룹 추가 (New Group)</button>
+            <button type="button" id="menuNewRefLayer">새 참조 레이어 추가 (Reference Layer)</button>
+            <button type="button" id="menuRenameLayer">레이어 이름 변경 (F2)</button>
+            <button type="button" id="menuMoveLayerUp">레이어 위로 이동 (Move Up)</button>
+            <button type="button" id="menuMoveLayerDown">레이어 아래로 이동 (Move Down)</button>
+            <button type="button" id="menuDupLayer">선택 레이어 복제</button>
+            <button type="button" id="menuDelLayer">선택 레이어 삭제</button>
+          </div>
+        </div>
+
+        <div class="menu-dropdown">
+          <button type="button" class="menu-trigger">보기 (View)</button>
+          <div class="dropdown-menu">
+            <button type="button" id="menuOpenPreview">독립 애니메이션 미리보기 창 (F4)</button>
+            <div class="menu-divider"></div>
+            <label class="menu-checkbox"><input type="checkbox" id="chkPixelGrid" checked /> 픽셀 그리드 (4x 이상)</label>
+            <label class="menu-checkbox"><input type="checkbox" id="chkOnionSkin" checked /> 양파껍질 (F3)</label>
+            <label class="menu-checkbox"><input type="checkbox" id="chkDiffView" /> 차이 뷰 (Difference View)</label>
+            <div class="menu-divider"></div>
+            <button type="button" id="menuZoom100">100% 줌</button>
+            <button type="button" id="menuZoom200">200% 줌</button>
+            <button type="button" id="menuZoomFit">화면에 맞추기 (Fit)</button>
+          </div>
+        </div>
+
+        <div class="menu-dropdown">
+          <button type="button" class="menu-trigger">AI & QA</button>
+          <div class="dropdown-menu">
+            <button type="button" id="menuRunAiAlign">AI 발/비율 자동 정렬 (Shift+A)</button>
+            <button type="button" id="menuRunAiQa">AI 시트 비전 검사 (Contact Sheet QA)</button>
+            <button type="button" id="menuRunAnimQa">흔들림 / 스케일 규칙 QA (J)</button>
+            <div class="menu-divider"></div>
+            <button type="button" id="menuAiSettings">AI API 키 설정 (.env)...</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="menu-right">
+        <span id="refLabel" class="ref-badge">기준: 없음</span>
+        <button type="button" id="btnModeToggle" class="mode-btn" title="간편 모드 / 프로 모드 전환">⚡ 간편 모드로 전환</button>
+        <button type="button" id="btnQuickExportTop" class="primary-btn-sm" title="Ctrl+E">보내기 (Export)</button>
+      </div>
+    </header>
+
+    <!-- 2. Dynamic Context Bar (Active Tool Options) -->
+    <div class="studio-context-bar" id="contextBar">
+      <!-- Tool: Advanced Selection -->
+      <div class="ctx-group" data-tool="select">
+        <span class="ctx-title">⬚ 고급 선택</span>
+        <label>도형:
+          <select id="selectShape" class="ctx-select">
+            <option value="rect">직사각형 (Rect)</option>
+            <option value="lasso">올가미 (Lasso)</option>
+            <option value="polygon">다각형 (Polygon)</option>
+            <option value="wand">마술봉 (Magic Wand)</option>
+            <option value="color">색상 선택 (Color Range)</option>
+          </select>
+        </label>
+        <div class="ctx-radios">
+          <label><input type="radio" name="selectMode" value="new" checked /> 새로</label>
+          <label><input type="radio" name="selectMode" value="add" /> ➕ 추가</label>
+          <label><input type="radio" name="selectMode" value="sub" /> ➖ 제외</label>
+        </div>
+        <label>허용치: <input type="number" id="selectTolerance" value="16" min="0" max="255" class="ctx-input-xs" /></label>
+        <div class="ctx-btn-row">
+          <button type="button" id="btnSelAssignChar" class="ctx-btn" title="선택 영역을 캐릭터로 지정">👤 캐릭터</button>
+          <button type="button" id="btnSelAssignVfx" class="ctx-btn" title="선택 영역을 VFX로 지정">✨ VFX</button>
+          <button type="button" id="btnSelExclude" class="ctx-btn" title="선택 영역 침범 제외">🚫 제외</button>
+          <button type="button" id="btnSelCrop" class="ctx-btn" title="선택 영역으로 캔버스 크롭">✂️ 크롭</button>
+          <button type="button" id="btnSelInvert" class="ctx-btn" title="선택 반전 (Ctrl+Shift+I)">🔄 반전</button>
+          <button type="button" id="btnSelClear" class="ctx-btn" title="선택 해제 (Ctrl+D)">✕ 해제</button>
+        </div>
+      </div>
+
+      <!-- Tool: Move -->
+      <div class="ctx-group" data-tool="move">
+        <span class="ctx-title">✥ 레이어 / 셀 이동</span>
+        <span class="ctx-hint">캔버스 드래그로 현재 선택된 레이어의 오프셋을 이동합니다.</span>
+      </div>
+
+      <!-- Tool: Anchor -->
+      <div class="ctx-group active" data-tool="anchor">
+        <span class="ctx-title">⚓ 발 앵커</span>
+        <label>X: <input type="number" id="ax" step="1" class="ctx-input-sm" /></label>
+        <label>Y: <input type="number" id="ay" step="1" class="ctx-input-sm" /></label>
+        <div class="ctx-btn-row">
+          <button type="button" data-nudge="-1,0" title="왼쪽 1px (←)">←</button>
+          <button type="button" data-nudge="0,-1" title="위 1px (↑)">↑</button>
+          <button type="button" data-nudge="0,1" title="아래 1px (↓)">↓</button>
+          <button type="button" data-nudge="1,0" title="오른쪽 1px (→)">→</button>
+          <button type="button" data-nudge="-5,0" title="왼쪽 5px">«</button>
+          <button type="button" data-nudge="5,0" title="오른쪽 5px">»</button>
+        </div>
+        <div class="ctx-btn-row" style="margin-left:6px">
+          <button type="button" id="btnFlipH" title="좌우 반전 (Flip Horizontal)">↔ 반전</button>
+          <button type="button" id="btnFlipV" title="상하 반전 (Flip Vertical)">↕ 반전</button>
+          <button type="button" id="btnRot90" title="90도 회전 (Rotate 90°)">↻ 90°</button>
+        </div>
+        <button type="button" id="btnRecompose" class="ctx-action-btn">앵커 반영 재구성</button>
+        <label class="ctx-label"><input type="checkbox" id="onionRef" /> 기준 프레임과 비교</label>
+      </div>
+
+      <!-- Tool: Ownership Mask -->
+      <div class="ctx-group" data-tool="mask">
+        <span class="ctx-title">🖌️ 소유권 마스크 브러시</span>
+        <div class="ctx-radios">
+          <label><input type="radio" name="maskMode" value="exclude" checked /> 🚫 침범 제외</label>
+          <label><input type="radio" name="maskMode" value="include" /> ➕ 시트 포함</label>
+          <label><input type="radio" name="maskMode" value="erase" /> 🧹 지우기</label>
+          <label><input type="radio" name="maskMode" value="restore" /> ↩️ 원본 복원</label>
+        </div>
+        <label>반경: <input type="number" id="brushSize" value="8" min="1" max="64" class="ctx-input-sm" />px</label>
+        <label class="ctx-label"><input type="checkbox" id="maskPaint" checked /> 페인트 모드 활성</label>
+      </div>
+
+      <!-- Tool: Crop -->
+      <div class="ctx-group" data-tool="crop">
+        <span class="ctx-title">📐 캔버스 크롭 / 안전 확장</span>
+        <label>L: <input type="number" id="cropL" value="0" step="1" class="ctx-input-xs" /></label>
+        <label>R: <input type="number" id="cropR" value="0" step="1" class="ctx-input-xs" /></label>
+        <label>T: <input type="number" id="cropT" value="0" step="1" class="ctx-input-xs" /></label>
+        <label>B: <input type="number" id="cropB" value="0" step="1" class="ctx-input-xs" /></label>
+        <button type="button" id="btnCropApply">패딩 적용</button>
+        <button type="button" id="btnCropExpand1">+1px</button>
+        <button type="button" id="btnCropExpand5">+5px</button>
+        <button type="button" id="btnCropTight" class="ctx-action-btn">자동 타이트</button>
+        <button type="button" id="btnCropSafe" class="ctx-action-btn-highlight" title="전체 프레임 잘림 방지">애니메이션 안전 크롭</button>
+      </div>
+
+      <!-- Tool: Difference View -->
+      <div class="ctx-group" data-tool="diff">
+        <span class="ctx-title">🔍 차이 검사 (Difference View)</span>
+        <label>비교 대상:
+          <select id="diffTargetSelect" class="ctx-select">
+            <option value="prev">이전 프레임</option>
+            <option value="ref">기준 프레임 (Ref)</option>
+          </select>
+        </label>
+        <span id="diffReadout" class="ctx-hint">풋 오프셋: ΔX: 0px, ΔY: 0px</span>
+      </div>
+
+      <!-- Tool: AI Align -->
+      <div class="ctx-group" data-tool="ai">
+        <span class="ctx-title">🤖 AI 지능형 정렬</span>
+        <label>제공자:
+          <select id="aiProvider" class="ctx-select">
+            <option value="ollama">Ollama (내 PC 로컬 · 무료)</option>
+            <option value="opencode_go">OpenCode Go (클라우드 게이트웨이)</option>
+            <option value="opencode">OpenCode Console (클라우드 · 무료그룹)</option>
+            <option value="nvidia">NVIDIA Build</option>
+            <option value="openrouter">OpenRouter</option>
+            <option value="disabled">사용 안 함 (로컬 CV만)</option>
+          </select>
+        </label>
+        <select id="aiModel" class="ctx-select" style="max-width:200px"></select>
+        <select id="modelGroup" class="ctx-select" style="max-width:130px; display:none" title="모델 그룹 필터">
+          <option value="all" selected>전체</option>
+          <option value="recommended">추천</option>
+          <option value="vision">Vision 검증</option>
+          <option value="free">무료</option>
+          <option value="popular">인기</option>
+        </select>
+        <button type="button" id="btnQuickPick" class="ctx-btn" title="가격·설명이 보이는 추천 프리셋에서 선택">✨ 빠른 선택</button>
+        <button type="button" id="btnAiModels" class="ctx-btn">새로고침</button>
+        <button type="button" id="btnAiAlign" class="ctx-action-btn-highlight">AI 정렬 실행</button>
+        <span id="aiStatus" class="ctx-hint"></span>
+      </div>
+    </div>
+
+    <!-- 3. Studio Workspace (Tool Rail + Main Canvas + Right Inspector) -->
+    <div class="studio-workspace">
+      
+      <!-- 3.1 Compact Left Tool Rail (36px) -->
+      <aside class="studio-tool-rail" id="toolRail">
+        <button type="button" class="tool-btn" data-tool="select" title="선택 도구 (V)">
+          <span class="tool-icon">⬚</span>
+        </button>
+        <button type="button" class="tool-btn" data-tool="move" title="이동 도구 (M)">
+          <span class="tool-icon">✥</span>
+        </button>
+        <button type="button" class="tool-btn active" data-tool="anchor" title="발 앵커 도구 (A)">
+          <span class="tool-icon">⚓</span>
+        </button>
+        <button type="button" class="tool-btn" data-tool="crop" title="크롭 / 캔버스 도구 (C)">
+          <span class="tool-icon">⌗</span>
+        </button>
+        <button type="button" class="tool-btn" data-tool="mask" title="소유권 마스크 브러시 (B)">
+          <span class="tool-icon">🖌️</span>
+        </button>
+        <button type="button" class="tool-btn" data-tool="diff" title="차이 뷰 (D)">
+          <span class="tool-icon">🔍</span>
+        </button>
+        
+        <div class="tool-divider"></div>
+        
+        <button type="button" class="tool-btn ai-tool-btn" data-tool="ai" title="AI 정렬 어시스트 (Shift+A)">
+          <span class="tool-icon">🤖</span>
+        </button>
+        <button type="button" class="tool-btn qa-tool-btn" id="btnOpenQa" title="애니메이션 QA 인스펙터 (J)">
+          <span class="tool-icon">⚖️</span>
+        </button>
+      </aside>
+
+      <!-- 3.2 Center Dominant Canvas Viewport (>60% Viewport Area) -->
+      <section class="studio-canvas-area">
+        
+        <!-- Top Stage Transport & Zoom Bar -->
+        <div class="stage-controls-bar">
+          <div class="transport-cluster">
+            <button type="button" id="firstFrame" class="tp-btn" title="Home: 첫 프레임">|◀</button>
+            <button type="button" id="prevFrame" class="tp-btn" title="← 또는 ,">◀</button>
+            <button type="button" id="playBtn" class="tp-btn tp-play" title="Space: 재생 / 일시정지">▶ 재생</button>
+            <button type="button" id="nextFrame" class="tp-btn" title="→ 또는 .">▶</button>
+            <button type="button" id="lastFrame" class="tp-btn" title="End: 마지막 프레임">▶|</button>
+            <span id="frameLabel" class="frame-tag-badge">프레임 0 / 0</span>
+          </div>
+
+          <div class="playback-options">
+            <label title="루프 모드">
+              <select id="loopMode" class="tp-select">
+                <option value="loop">🔁 루프</option>
+                <option value="pingpong">↔️ 핑퐁</option>
+                <option value="once">➡️ 1회</option>
+              </select>
+            </label>
+            <label class="tp-fps">FPS: <input type="number" id="fpsInput" value="12" min="1" max="60" /></label>
+          </div>
+
+          <div class="zoom-cluster">
+            <button type="button" class="btn-zoom" data-zoom="1">1x</button>
+            <button type="button" class="btn-zoom" data-zoom="2">2x</button>
+            <button type="button" class="btn-zoom" data-zoom="3">3x</button>
+            <button type="button" class="btn-zoom" data-zoom="4">4x</button>
+            <button type="button" class="btn-zoom" data-zoom="fit">Fit</button>
+            <span id="zoomLabel" class="zoom-indicator">200%</span>
+          </div>
+        </div>
+
+        <!-- Main Viewport Wrap -->
+        <div class="canvas-wrap" id="canvasWrap">
+          <canvas id="view" width="512" height="512"></canvas>
+          <div class="hud" id="stageHud">앵커: (0, 0) | 크기: 0×0 | 줌: 200%</div>
+          <div class="legend">클릭/드래그 = 앵커 이동 · 🔴 발 앵커 · Space+드래그 = 캔버스 이동 · 휠 = 줌</div>
+        </div>
+      </section>
+
+      <!-- 3.3 Right Tabbed Inspector (280px) -->
+      <aside class="studio-inspector" id="rightInspector">
+        <div class="inspector-tabs">
+          <button type="button" class="insp-tab-btn active" data-tab="properties">속성</button>
+          <button type="button" class="insp-tab-btn" data-tab="layers">레이어</button>
+          <button type="button" class="insp-tab-btn" data-tab="aiqa">AI QA</button>
+        </div>
+
+        <div class="inspector-body">
+          <!-- Tab 1: Properties -->
+          <div class="insp-pane active" id="tabProperties">
+            <div class="insp-section">
+              <h3>셀 속성 (Cel Properties)</h3>
+              <div class="insp-row">
+                <span class="insp-lbl">레이어</span>
+                <span id="propCelLayer" class="insp-val">Character</span>
+              </div>
+              <div class="insp-row">
+                <span class="insp-lbl">오프셋 (X, Y)</span>
+                <span id="propCelOffset" class="insp-val">0, 0</span>
+              </div>
+              <div class="insp-row">
+                <span class="insp-lbl">연결 셀 (Link)</span>
+                <span id="propCelLink" class="insp-val">독립 셀</span>
+                <button type="button" id="btnToggleCelLink" class="btn-xs">연결/해제</button>
+              </div>
+            </div>
+
+            <div class="insp-section">
+              <h3>프레임 속성 (Frame Properties)</h3>
+              <div class="insp-row">
+                <span class="insp-lbl">인덱스</span>
+                <span id="propFrameIndex" class="insp-val">0</span>
+              </div>
+              <div class="insp-row">
+                <span class="insp-lbl">재생 시간</span>
+                <span id="propFrameDuration" class="insp-val">80ms</span>
+              </div>
+              <div class="insp-row">
+                <span class="insp-lbl">바운딩 박스</span>
+                <span id="propFrameBBox" class="insp-val">0×0</span>
+              </div>
+              <div class="insp-row">
+                <span class="insp-lbl">VFX 감지</span>
+                <span id="propFrameVfx" class="insp-val">-</span>
+              </div>
+            </div>
+
+            <div class="insp-section">
+              <h3>스프라이트 (Sprite)</h3>
+              <div class="insp-row">
+                <span class="insp-lbl">안전 캔버스</span>
+                <span id="propSpriteCanvas" class="insp-val">0×0</span>
+              </div>
+              <div class="insp-row">
+                <span class="insp-lbl">총 프레임</span>
+                <span id="propSpriteFrames" class="insp-val">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Layers -->
+          <div class="insp-pane" id="tabLayers">
+            <div class="layer-actions-bar">
+              <button type="button" id="btnAddLayerInsp" class="btn-sm">+ 레이어</button>
+              <button type="button" id="btnAddGroupInsp" class="btn-sm" title="새 레이어 그룹">+ 그룹</button>
+              <button type="button" id="btnAddRefInsp" class="btn-sm" title="새 참조 레이어">+ 참조</button>
+              <button type="button" id="btnRenameLayerInsp" class="btn-sm" title="레이어 이름 변경">이름</button>
+              <button type="button" id="btnMoveLayerUpInsp" class="btn-sm" title="위로 이동">▲</button>
+              <button type="button" id="btnMoveLayerDownInsp" class="btn-sm" title="아래로 이동">▼</button>
+              <button type="button" id="btnDupLayerInsp" class="btn-sm">복제</button>
+              <button type="button" id="btnDelLayerInsp" class="btn-sm danger">삭제</button>
+            </div>
+            <div class="layers-list" id="inspectorLayersList"></div>
+            <div class="insp-section" style="margin-top:12px">
+              <h3>레이어 속성</h3>
+              <div class="insp-row">
+                <span class="insp-lbl">불투명도</span>
+                <input type="range" id="layerOpacitySlider" min="0" max="100" value="100" style="flex:1" />
+                <span id="layerOpacityVal" class="insp-val" style="width:36px">100%</span>
+              </div>
+              <div class="insp-row">
+                <span class="insp-lbl">블렌드 모드</span>
+                <select id="layerBlendSelect" class="ctx-select" style="flex:1">
+                  <option value="normal">Normal</option>
+                  <option value="multiply">Multiply</option>
+                  <option value="screen">Screen</option>
+                  <option value="add">Add</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: AI Diagnostics & QA -->
+          <div class="insp-pane" id="tabAiQa">
+            <div class="insp-section">
+              <h3>자동 애니메이션 검사</h3>
+              <div class="qa-action-row">
+                <button type="button" id="btnAnimQa" class="btn-sm primary">흔들림 / 스케일 QA</button>
+                <button type="button" id="btnAiQa" class="btn-sm">비전 AI 검사</button>
+              </div>
+            </div>
+            <div class="qa-output-card" id="qaBox">
+              처리 후 프레임별 발 흔들림(Jitter), 스케일 이상, VFX 침범 진단이 표시됩니다.
+            </div>
+            <div class="meta" id="meta"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 4. Bottom Aseprite-Grade Matrix Timeline (190px Docked) -->
+    <section class="studio-timeline-panel" id="timelinePanel">
+      <div class="tl-control-bar">
+        <div class="tl-bar-left">
+          <span class="tl-panel-title">타임라인 (Aseprite 2D Matrix)</span>
+          <button type="button" id="btnAddLayer" class="tl-tool-btn" title="새 레이어">+ 레이어</button>
+          <button type="button" id="btnAddLayerGroup" class="tl-tool-btn" title="새 레이어 그룹">+ 그룹</button>
+          <button type="button" id="btnAddRefLayer" class="tl-tool-btn" title="새 참조 레이어">+ 참조</button>
+          <button type="button" id="btnAddTag" class="tl-tool-btn" title="새 애니메이션 태그">+ 태그</button>
+          <button type="button" id="btnAddBlankFrame" class="tl-tool-btn" title="새 빈 프레임 삽입">+ 빈 프레임</button>
+          <button type="button" id="btnDupFrame" class="tl-tool-btn" title="현재 프레임 복제">프레임 복제</button>
+          <button type="button" id="btnMoveFrameLeft" class="tl-tool-btn" title="프레임 왼쪽으로 이동 (Alt+[)">←</button>
+          <button type="button" id="btnMoveFrameRight" class="tl-tool-btn" title="프레임 오른쪽으로 이동 (Alt+])">→</button>
+          <button type="button" id="btnReverseFrames" class="tl-tool-btn" title="프레임 순서 반전">순서 반전</button>
+          <button type="button" id="btnDelFrame" class="tl-tool-btn danger" title="현재 프레임 삭제">삭제</button>
+          <button type="button" id="btnOpenPreviewTl" class="tl-tool-btn primary" style="background:#2b3e60;color:#fff;border-color:#4a74ba" title="독립 애니메이션 미리보기 (F4)">🎬 미리보기</button>
+        </div>
+
+        <div class="tl-bar-right">
+          <label class="tl-check-label"><input type="checkbox" id="onionSkinToggle" checked /> 양파껍질</label>
+          <label class="tl-check-label">이전: <input type="number" id="onionPast" value="1" min="0" max="5" class="tl-num-input" /></label>
+          <label class="tl-check-label">이후: <input type="number" id="onionFuture" value="0" min="0" max="5" class="tl-num-input" /></label>
+          <!-- Hidden compatibility elements -->
+          <input type="checkbox" id="onion" checked style="display:none" />
+        </div>
+      </div>
+
+      <!-- Animation Tags Track Ribbon -->
+      <div class="tl-tags-bar" id="tlTagsBar"></div>
+
+      <!-- 2D Cel Matrix Container -->
+      <div class="tl-matrix-wrap" id="tlMatrixWrap">
+        <!-- Fixed Layers Column -->
+        <div class="tl-layers-col" id="tlLayersCol"></div>
+        <!-- Synchronized Horizontally Scrollable Frames and Cels -->
+        <div class="tl-frames-scroll" id="tlFramesScroll">
+          <div class="tl-frames-header" id="tlFramesHeader"></div>
+          <div class="tl-cels-grid" id="tlCelsGrid"></div>
+        </div>
+      </div>
+
+      <!-- Legacy thumbnail strip retained for backend compatibility but hidden -->
+      <div class="timeline" id="timeline" style="display:none"></div>
+    </section>
+
+    <!-- 5. Bottom Status Bar (24px Docked) -->
+    <footer class="studio-status-bar">
+      <div class="status-col left">
+        <span class="status-indicator">●</span>
+        <span id="status">대기 중</span>
+      </div>
+      <div class="status-col center">
+        <span id="statusCoords">캔버스: 0×0 px | 앵커: (0, 0)</span>
+      </div>
+      <div class="status-col right">
+        <span id="statusFrameInfo">프레임 0 / 0</span>
+        <span class="status-sep">|</span>
+        <span id="statusZoomInfo">줌: 200%</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==================== MODAL DIALOGS ==================== -->
+
+  <!-- Modal 1: Import SpriteSheet Dialog (Ctrl+I) -->
+  <div class="studio-modal-overlay" id="importModal" style="display:none">
+    <div class="studio-modal-dialog">
+      <div class="modal-header">
+        <h3>스프라이트시트 불러오기 (Import SpriteSheet)</h3>
+        <button type="button" class="modal-close" data-close="importModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="modal-file-dropzone">
+          <span class="dropzone-icon">📁</span>
+          <span>PNG 또는 WebP 스프라이트시트 파일 선택</span>
+          <input type="file" id="file" accept="image/png,image/webp,.png,.webp" />
+        </label>
+        <div class="modal-grid-config">
+          <div class="modal-row">
+            <label>열 (Columns): <input type="number" id="cols" value="4" min="1" max="32" /></label>
+            <label>행 (Rows): <input type="number" id="rows" value="4" min="1" max="32" /></label>
+            <label><input type="checkbox" id="autoGrid" /> 그리드 자동 추정</label>
+          </div>
+          <div class="modal-row">
+            <label>기본 속도(ms): <input type="number" id="duration" value="80" min="16" max="2000" step="8" /></label>
+            <label>크롭 패딩: <input type="number" id="pad" value="4" min="0" max="64" /></label>
+            <label>확장 배율: <input type="number" id="expand_ratio" value="1.15" min="0.5" max="2.5" step="0.05" title="옆 칸 VFX 탐색" /></label>
+          </div>
+          <div class="modal-row">
+            <label>알파 임계값: <input type="number" id="alpha" value="12" min="1" max="250" /></label>
+          </div>
+        </div>
+        <p class="modal-hint">
+          * 그리드 칸은 <em>시드(Seed)</em>입니다. 캐릭터나 VFX가 칸 밖으로 넘쳐도 소프트 플러드로 자동 복구하며, 발 앵커를 기준으로 안전 캔버스에 정렬합니다.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" data-close="importModal">취소</button>
+        <button type="button" id="btnProcess" class="btn-modal-primary" disabled>자동 분석 및 추출 실행</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Export Game Assets Dialog (Ctrl+E) -->
+  <div class="studio-modal-overlay" id="exportModal" style="display:none">
+    <div class="studio-modal-dialog">
+      <div class="modal-header">
+        <h3>게임 에셋 내보내기 (Export Game Assets)</h3>
+        <button type="button" class="modal-close" data-close="exportModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-row" style="margin-bottom:10px">
+          <label style="flex:1">내보내기 프로젝트/번들 이름: <input type="text" id="exportName" value="character_attack" style="width:100%" /></label>
+        </div>
+
+        <div class="export-options-grid">
+          <div class="exp-opt-group">
+            <span class="exp-opt-title">📐 레이아웃 & 아틀라스 패킹 (Packing & Texture)</span>
+            <div class="modal-row">
+              <label>패킹 방식:
+                <select id="expPackMode" class="ctx-select">
+                  <option value="packed" selected>빈 패킹 아틀라스 (MaxRects Packed)</option>
+                  <option value="grid">균등 시트 그리드 (Grid)</option>
+                </select>
+              </label>
+              <label>패딩: <input type="number" id="expPadding" value="2" min="0" max="16" class="ctx-input-xs" />px</label>
+              <label>익스트루드: <input type="number" id="expExtrude" value="1" min="0" max="4" class="ctx-input-xs" title="GPU 텍스처 번짐 방지 픽셀 복제" />px</label>
+            </div>
+          </div>
+
+          <div class="exp-opt-group">
+            <span class="exp-opt-title">🎨 색상 모드 & 팔레트 (Color & Palette)</span>
+            <div class="modal-row">
+              <label>색상 모드:
+                <select id="expColorMode" class="ctx-select">
+                  <option value="RGBA" selected>RGBA (32-bit Truecolor)</option>
+                  <option value="indexed">인덱스 색상 (Indexed 8-bit)</option>
+                </select>
+              </label>
+              <label>색상 수:
+                <select id="expColors" class="ctx-select">
+                  <option value="256" selected>256 Colors</option>
+                  <option value="128">128 Colors</option>
+                  <option value="64">64 Colors</option>
+                  <option value="32">32 Colors</option>
+                  <option value="16">16 Colors</option>
+                </select>
+              </label>
+              <label>디더링:
+                <select id="expDither" class="ctx-select">
+                  <option value="none" selected>없음 (None)</option>
+                  <option value="floyd-steinberg">Floyd-Steinberg</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="exp-opt-group">
+            <span class="exp-opt-title">⚡ 최적화 & Aseprite 연동 (Optimization & Bridge)</span>
+            <div class="modal-row">
+              <label class="exp-check"><input type="checkbox" id="expMergeDup" checked /> 중복 프레임 병합 (Duplicate Merge)</label>
+              <label class="exp-check"><input type="checkbox" id="expSplitTags" /> 태그별 시트 분할 (Split Tags)</label>
+              <label class="exp-check"><input type="checkbox" id="expBridgeAseprite" checked /> Aseprite 브릿지 스크립트 생성 (.lua)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="export-format-grid" style="margin-top:8px">
+          <label class="exp-check"><input type="checkbox" id="expPngSeq" checked /> 개별 PNG 시퀀스 (frames/)</label>
+          <label class="exp-check"><input type="checkbox" id="expAtlas" checked /> 스프라이트시트 (spritesheet.png)</label>
+          <label class="exp-check"><input type="checkbox" id="expAnimJson" checked /> 게임 엔진용 animation.json</label>
+          <label class="exp-check"><input type="checkbox" id="expAseJson" checked /> Aseprite 호환 JSON</label>
+          <label class="exp-check"><input type="checkbox" id="expGif" checked /> 애니메이션 GIF (고스트 방지)</label>
+          <label class="exp-check"><input type="checkbox" id="expApng" checked /> 무손실 APNG</label>
+          <label class="exp-check"><input type="checkbox" id="expWebp" checked /> 애니메이션 WebP</label>
+        </div>
+
+        <div id="aseBridgeStatus" class="ase-bridge-status-bar" style="margin-top:6px"></div>
+        <div id="exportLinks" class="export-links-box"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" data-close="exportModal">닫기</button>
+        <button type="button" id="btnExport" class="btn-modal-primary" disabled>에셋 생성 및 다운로드 번들</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: AI Provider & API Keys Dialog -->
+  <div class="studio-modal-overlay" id="aiSettingsModal" style="display:none">
+    <div class="studio-modal-dialog">
+      <div class="modal-header">
+        <h3>AI 제공자 및 API 키 설정</h3>
+        <button type="button" class="modal-close" data-close="aiSettingsModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-hint">
+          * SpriteRepair는 AI 키가 없어도 100% 로컬 CV 알고리즘으로 정상 작동합니다. Vision AI는 포즈 분석 및 추가 검사용입니다.
+        </p>
+        <div class="modal-input-stack">
+          <label>OpenCode Go API 키:
+            <input type="password" id="keyOpencodeGo" placeholder="OpenCode Go 키 (비워두면 기존 키 유지)" class="modal-text-full" autocomplete="off" />
+          </label>
+          <label>OpenCode Console API 키:
+            <input type="password" id="keyOpencode" placeholder="OpenCode Console 키 (비워두면 기존 키 유지)" class="modal-text-full" autocomplete="off" />
+          </label>
+          <label>NVIDIA Build API 키:
+            <input type="password" id="keyNvidia" placeholder="nvapi-... (비워두면 기존 키 유지)" class="modal-text-full" autocomplete="off" />
+          </label>
+          <label>OpenRouter API 키:
+            <input type="password" id="keyOpenrouter" placeholder="sk-or-... (비워두면 기존 키 유지)" class="modal-text-full" autocomplete="off" />
+          </label>
+          <label class="menu-checkbox" style="margin-top:6px">
+            <input type="checkbox" id="visionOnly" checked /> 비전(이미지 인식) 지원 모델만 필터링
+          </label>
+        </div>
+        <div id="keyStatus" class="ctx-hint" style="margin-top:8px"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" data-close="aiSettingsModal">닫기</button>
+        <button type="button" id="btnSaveKeys" class="btn-modal-primary">키 저장 (.env)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Tag Editor Dialog -->
+  <div class="studio-modal-overlay" id="tagModal" style="display:none">
+    <div class="studio-modal-dialog" style="max-width:400px">
+      <div class="modal-header">
+        <h3 id="tagModalTitle">애니메이션 태그 편집</h3>
+        <button type="button" class="modal-close" data-close="tagModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-input-stack">
+          <label>태그 이름: <input type="text" id="tagInputName" value="Attack" class="modal-text-full" /></label>
+          <div class="modal-row">
+            <label>시작 프레임: <input type="number" id="tagInputFrom" value="0" min="0" style="width:70px" /></label>
+            <label>종료 프레임: <input type="number" id="tagInputTo" value="3" min="0" style="width:70px" /></label>
+          </div>
+          <div class="modal-row">
+            <label>방향:
+              <select id="tagInputDir" class="ctx-select">
+                <option value="forward">순방향 (Forward)</option>
+                <option value="reverse">역방향 (Reverse)</option>
+                <option value="pingpong">핑퐁 (Ping-pong)</option>
+              </select>
+            </label>
+            <label>태그 색상: <input type="color" id="tagInputColor" value="#6aa8ff" style="width:40px; height:28px" /></label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btnDeleteTagModal" class="btn-modal-danger" style="display:none">태그 삭제</button>
+        <button type="button" class="btn-modal-cancel" data-close="tagModal">취소</button>
+        <button type="button" id="btnSaveTagModal" class="btn-modal-primary">저장</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Standalone Preview Window Dialog (F4) -->
+  <div class="studio-modal-overlay" id="previewModal" style="display:none">
+    <div class="preview-modal-dialog">
+      <div class="modal-header">
+        <h3>🎬 애니메이션 단독 미리보기 (Preview Window)</h3>
+        <button type="button" class="modal-close" data-close="previewModal">✕</button>
+      </div>
+      <div class="preview-stage-wrap bg-checker" id="previewStageWrap">
+        <canvas id="previewView" width="256" height="256"></canvas>
+      </div>
+      <div class="preview-toolbar">
+        <div class="preview-toolbar-left">
+          <button type="button" id="btnPreviewPlay" class="tp-btn tp-play">▶ 재생</button>
+          <span id="previewFrameTag" class="frame-tag-badge">0 / 0</span>
+          <label class="tp-fps">FPS: <input type="number" id="previewFpsInput" value="12" min="1" max="60" style="width:44px" /></label>
+          <select id="previewLoopMode" class="tp-select">
+            <option value="loop">🔁 루프</option>
+            <option value="pingpong">↔️ 핑퐁</option>
+            <option value="once">➡️ 1회</option>
+          </select>
+        </div>
+        <div class="preview-toolbar-right">
+          <label style="font-size:11px;color:var(--text-muted)">배경:
+            <select id="previewBgSelect" class="ctx-select">
+              <option value="bg-checker">투명 격자</option>
+              <option value="bg-black">검정색</option>
+              <option value="bg-dark">짙은 회색</option>
+              <option value="bg-white">흰색</option>
+            </select>
+          </label>
+          <label style="font-size:11px;color:var(--text-muted)">배율:
+            <select id="previewScaleSelect" class="ctx-select">
+              <option value="1">100%</option>
+              <option value="2" selected>200%</option>
+              <option value="3">300%</option>
+              <option value="4">400%</option>
+            </select>
+          </label>
+          <button type="button" class="btn-modal-cancel" data-close="previewModal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: AI 모델 빠른 선택 (가격·설명 프리셋) -->
+  <div class="studio-modal-overlay" id="modelPickerModal" style="display:none">
+    <div class="studio-modal-dialog" style="max-width:660px">
+      <div class="modal-header">
+        <h3>🤖 AI 모델 빠른 선택</h3>
+        <button type="button" class="modal-close" data-close="modelPickerModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-hint">가격은 입력 기준 참고용(변동 가능) · Go는 $10/월 구독 사용량 적용 · 무료 모델은 한시적일 수 있음</p>
+        <div class="modal-sec-title">1. AI 엔진 공급자 (Provider 선택)</div>
+        <div id="mpProviders" class="mp-providers"></div>
+        <div class="modal-sec-title">2. 추천 모델 프리셋 <span id="mpCount" class="ctx-hint"></span></div>
+        <div id="mpPresets" class="mp-presets"></div>
+        <div class="modal-sec-title">3. 직접 입력 또는 선택된 모델 ID</div>
+        <input type="text" id="mpCustom" class="modal-text-full" placeholder="예: deepseek-v4-flash-vision-exp" spellcheck="false" />
+        <div id="mpWarn" class="ctx-hint" style="margin-top:6px"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" data-close="modelPickerModal">취소</button>
+        <button type="button" id="mpApply" class="btn-modal-primary">⚡ 모델 즉시 적용 &amp; 저장</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

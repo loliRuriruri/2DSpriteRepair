@@ -1,0 +1,15 @@
+.env
+.venv/
+workspace/
+__pycache__/
+*.pyc
+.ai-cache/
+references/
+tools/
+# regenerable benchmark artifacts (run benchmark/run_benchmark.py)
+benchmark/out/
+benchmark/before_after/
+benchmark/preview/
+benchmark/failures/
+*.log
+server.log*
