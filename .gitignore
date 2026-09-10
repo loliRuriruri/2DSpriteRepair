@@ -13,3 +13,4 @@ benchmark/preview/
 benchmark/failures/
 *.log
 server.log*
+*.bak
