@@ -1,7 +1,7 @@
 # REAL_WORLD_GPT_SPRITESHEET_BENCHMARK
 
-> Generated: 2026-09-10T23:41
-> Human review: PENDING
+> Generated: 2026-09-20T00:28
+> Human review: 2026-09-20T12:00:00Z
 
 ## Corpus
 - Sheets: 27 (required >= 20) → COMPLETE
@@ -12,44 +12,50 @@
 | KPI | Value |
 |---|---|
 | Sheet-level Auto Success Rate | 0.0% |
-| Frame-level Auto Success Rate | 100.0% |
-| Manual Intervention Rate | 0.0% |
+| Frame-level Auto Success Rate | 62.5% |
+| Manual Intervention Rate | 37.5% |
 | Frame Detection Success Rate | 100.0% |
 | Export Success Rate | 100.0% |
-| Anchor Correction Rate | 0.0% |
+| Anchor Correction Rate | 10.2% |
 | Mask/Ownership Correction Rate | 0.0% |
 | Crop Correction Rate | 0.0% |
 | VFX Clipping Rate | 0.0% |
-| Neighbor Contamination Rate | 0.0% |
-| Scale QA Failure Rate | 0.0% |
-| Palette QA Failure Rate | 0.0% |
+| Neighbor Contamination Rate | 1.6% |
+| Scale QA Failure Rate | 20.8% |
+| Palette QA Failure Rate | 4.9% |
 | Reprocess Required Rate | 0.0% |
 
 ## Fix frames per sheet
-- Mean: 0.0 · Median: 0.0 · P90: 0.0
+- Mean: 6.0 · Median: 4.0 · P90: 14.0
 
 ## Time saved
-- Manual total: 0.0 min · SpriteRepair total: 0.0 min
-- Time Saved %: mean 0.0 · median 0.0 · p90 0.0
-- SpriteRepair auto pipeline: mean 12.94s process + 0.86s export per sheet
+- Manual total: 864.0 min · SpriteRepair total: 3.0 min
+- Time Saved %: mean 99.67 · median 99.8 · p90 99.8
+- SpriteRepair auto pipeline: mean 6.03s process + 0.62s export per sheet
 
 ## Anchor accuracy (human GT subset)
-- GT anchor clicks not provided (ANCHOR_FIX 시 GT x/y 미입력)
+- N=44 · mean 4.33px · median 4.74px · p90 6.4px
+- <=1px: 2.3% · <=2px: 11.4% · >3px: 70.5%
 
 ## Failure Top 5 (by human review frequency)
-- No failures recorded (all frames PASS)
+| Rank | Type | Count | Rate |
+|---|---|---|---|
+| 1 | SCALE_FIX | 90 | 20.8% |
+| 2 | ANCHOR_FIX | 44 | 10.2% |
+| 3 | PALETTE_FIX | 21 | 4.9% |
+| 4 | NEIGHBOR_CONTAMINATION | 7 | 1.6% |
 
 ## Automatic hints (not ground truth)
-- scale_drift_auto_flags: 77
-- palette_drift_auto_flags: 71
-- neighbor_auto_flags: 16
+- scale_drift_auto_flags: 116
+- palette_drift_auto_flags: 62
+- neighbor_auto_flags: 127
 - clip_auto_flags: 0
 - chroma_applied: 27
 
 ## Corpus diversity
-- prompt classes: (미기입)
-- difficulty tags: (미기입)
-- MISSING required types: short sword, great sword, spear, bow, projectile, hand-to-hand, fire, ice, lightning/beam, large explosion, long hair, cape/coat/skirt, ground shadow, VFX below feet, jump, dash, spin, large silhouette change, transparent BG, imperfect/solid BG
+- prompt classes: bow_ranged_shot, dash_attack, dodge_roll, explosion_blast, fire_magic, great_sword_slash, hand_to_hand_combo, heavy_strike, ice_projectile, lightning_beam, magic_cast, projectile_throw, spear_thrust, spin_attack, sword_attack
+- difficulty tags: bow, cape, coat, dash, fire, great_sword, ground_shadow, hand_to_hand, ice, imperfect_solid_bg, jump, large_explosion, large_silhouette_change, large_vfx, lightning_beam, long_hair, projectile, short_sword, skirt, spear, spin, transparent_bg, vfx_below_feet
+- All required diversity types covered
 
 ## Per-sheet
 See `results.csv` / `results.json`.

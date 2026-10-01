@@ -221,10 +221,14 @@ def aggregate(auto: list[dict[str, Any]], review: dict[str, Any]) -> tuple[list[
         "diversity": {
             "prompt_classes": sorted({r.get("prompt_class") for r in rows if r.get("prompt_class")}),
             "tags_present": sorted({t for r in rows for t in (r["difficulty"].split(",") if r["difficulty"] else [])}),
-            "missing_required": [t for t in REQUIRED_DIVERSITY if not any(
-                t.lower() in (r.get("prompt_class") or "").lower() or t.lower() in r["difficulty"].lower()
-                for r in rows
-            )],
+            "missing_required": [
+                req for req in REQUIRED_DIVERSITY if not any(
+                    any(alt.strip().lower().replace(" ", "_").replace("-", "_") in (r.get("prompt_class") or "").lower() or
+                        alt.strip().lower().replace(" ", "_").replace("-", "_") in r["difficulty"].lower().replace("-", "_")
+                        for alt in req.split("/"))
+                    for r in rows
+                )
+            ],
         },
         "reviewed_at": review.get("reviewed_at"),
     }

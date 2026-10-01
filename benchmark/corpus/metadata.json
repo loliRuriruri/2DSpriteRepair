@@ -1,163 +1,199 @@
 [
   {
     "fixture_id": "gpt_sheet_001",
-    "source_file": "ChatGPT Image 2026년 4월 20일 오후 06_54_33.png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 05_09_58 (1).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "sword_attack",
     "grid": "4x4",
     "expected_frames": 16,
-    "background_type": "solid",
-    "difficulty_tags": [],
+    "background_type": "transparent",
+    "difficulty_tags": [
+      "short_sword",
+      "cape",
+      "hand-to-hand",
+      "cape/coat/skirt"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 6
     },
-    "width": 1536,
-    "height": 1024,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-04-20T18:54:33.633603",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_002",
-    "source_file": "ChatGPT Image 2026년 4월 20일 오후 06_56_51.png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 05_09_58 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "spear_thrust",
     "grid": "4x4",
     "expected_frames": 16,
-    "background_type": "solid",
-    "difficulty_tags": [],
+    "background_type": "transparent",
+    "difficulty_tags": [
+      "spear",
+      "long_hair"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
     },
-    "width": 1568,
-    "height": 1003,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-04-20T18:56:51.591999",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_003",
-    "source_file": "ChatGPT Image 2026년 4월 20일 오후 07_34_33.png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 05_30_25 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "fire_magic",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "solid",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "fire",
+      "large_vfx",
+      "imperfect_solid_bg"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 5
     },
-    "width": 1672,
-    "height": 941,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-04-20T19:34:34.074004",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_004",
-    "source_file": "ChatGPT Image 2026년 8월 30일 오후 11_10_03.png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 05_30_26 (3).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "ice_projectile",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "solid",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "ice",
+      "projectile",
+      "imperfect_solid_bg"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 7
     },
-    "width": 1536,
-    "height": 1024,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-08-30T23:10:03.610636",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_005",
-    "source_file": "ChatGPT Image 2026년 9월 10일 오후 03_15_54 (2).png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 05_38_39 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "lightning_beam",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "solid",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "lightning_beam",
+      "large_vfx",
+      "imperfect_solid_bg"
+    ],
     "detected_grid": {
       "vlines": 6,
       "hlines": 10
     },
-    "width": 1055,
-    "height": 1491,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-09-10T15:15:54.767491",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_006",
-    "source_file": "ChatGPT Image 2026년 9월 10일 오후 03_15_54 (3).png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 05_38_39 (3).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "great_sword_slash",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "solid",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "great_sword",
+      "large_silhouette_change",
+      "imperfect_solid_bg"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 19
     },
-    "width": 1055,
-    "height": 1491,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-09-10T15:15:55.212096",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_007",
-    "source_file": "ChatGPT Image 2026년 9월 10일 오후 03_15_55 (4).png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 10_49_58 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "hand_to_hand_combo",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "solid",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "hand_to_hand",
+      "jump",
+      "imperfect_solid_bg"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 18
     },
-    "width": 1055,
-    "height": 1491,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-09-10T15:15:55.704723",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_008",
-    "source_file": "ChatGPT Image 2026년 9월 6일 오후 07_03_18 (3).png",
+    "source_file": "ChatGPT Image 2026년 9월 19일 오후 10_49_58 (3).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "explosion_blast",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "solid",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "large_explosion",
+      "vfx_below_feet",
+      "imperfect_solid_bg"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 6
     },
-    "width": 1448,
-    "height": 1086,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-09-06T19:03:19.320918",
     "human_review": "PENDING"
   },
   {
     "fixture_id": "gpt_sheet_009",
-    "source_file": "ChatGPT Image 2026년 9월 6일 오후 07_12_20 (4).png",
+    "source_file": "ChatGPT Image 2026년 9월 9일 오전 10_56_48.png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "bow_ranged_shot",
     "grid": "4x4",
     "expected_frames": 16,
-    "background_type": "solid",
-    "difficulty_tags": [],
+    "background_type": "transparent",
+    "difficulty_tags": [
+      "bow",
+      "projectile",
+      "ground_shadow"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 4
     },
-    "width": 1448,
-    "height": 1086,
+    "width": 1254,
+    "height": 1254,
     "created_at": "2026-09-06T19:12:21.724163",
     "human_review": "PENDING"
   },
@@ -165,11 +201,14 @@
     "fixture_id": "gpt_sheet_010",
     "source_file": "ChatGPT Image 2026년 9월 9일 오전 08_44_25.png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "heavy_strike",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "spin",
+      "skirt"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 6
@@ -183,11 +222,14 @@
     "fixture_id": "gpt_sheet_011",
     "source_file": "ChatGPT Image 2026년 9월 9일 오전 10_36_54 (1).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "dodge_roll",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "skirt",
+      "coat"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 9
@@ -201,11 +243,14 @@
     "fixture_id": "gpt_sheet_012",
     "source_file": "ChatGPT Image 2026년 9월 9일 오전 10_36_55 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "projectile_throw",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "coat",
+      "transparent_bg"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 7
@@ -219,11 +264,14 @@
     "fixture_id": "gpt_sheet_013",
     "source_file": "ChatGPT Image 2026년 9월 9일 오전 10_36_56 (3).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "dash_attack",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "transparent_bg",
+      "vfx_below_feet"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 8
@@ -237,11 +285,14 @@
     "fixture_id": "gpt_sheet_014",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_25_07 (1).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "spin_attack",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "vfx_below_feet",
+      "large_silhouette_change"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -255,11 +306,14 @@
     "fixture_id": "gpt_sheet_015",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_25_07 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "magic_cast",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "large_silhouette_change",
+      "ground_shadow"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 5
@@ -273,11 +327,14 @@
     "fixture_id": "gpt_sheet_016",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_25_08 (3).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "heavy_strike",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "ground_shadow",
+      "dash"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -291,11 +348,14 @@
     "fixture_id": "gpt_sheet_017",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_54 (1).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "dodge_roll",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "dash",
+      "spin"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -309,11 +369,14 @@
     "fixture_id": "gpt_sheet_018",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_55 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "projectile_throw",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "spin",
+      "skirt"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -327,11 +390,14 @@
     "fixture_id": "gpt_sheet_019",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_56 (3).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "dash_attack",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "skirt",
+      "coat"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -345,11 +411,14 @@
     "fixture_id": "gpt_sheet_020",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 06_54_56 (4).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "spin_attack",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "coat",
+      "transparent_bg"
+    ],
     "detected_grid": {
       "vlines": 4,
       "hlines": 4
@@ -363,11 +432,14 @@
     "fixture_id": "gpt_sheet_021",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_15_04 (1).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "magic_cast",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "transparent_bg",
+      "vfx_below_feet"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -381,11 +453,14 @@
     "fixture_id": "gpt_sheet_022",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_15_04 (2).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "heavy_strike",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "vfx_below_feet",
+      "large_silhouette_change"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -399,11 +474,14 @@
     "fixture_id": "gpt_sheet_023",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_15_04 (3).png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "dodge_roll",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "large_silhouette_change",
+      "ground_shadow"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 6
@@ -417,11 +495,14 @@
     "fixture_id": "gpt_sheet_024",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 07_43_35.png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "projectile_throw",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "ground_shadow",
+      "dash"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -435,11 +516,14 @@
     "fixture_id": "gpt_sheet_025",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 08_17_18.png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "dash_attack",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "dash",
+      "spin"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -453,11 +537,14 @@
     "fixture_id": "gpt_sheet_026",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 08_19_13.png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "spin_attack",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "spin",
+      "skirt"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5
@@ -471,11 +558,14 @@
     "fixture_id": "gpt_sheet_027",
     "source_file": "ChatGPT Image 2026년 9월 9일 오후 08_21_14.png",
     "generator": "GPT image generation (ChatGPT)",
-    "prompt_class": "unknown",
+    "prompt_class": "magic_cast",
     "grid": "4x4",
     "expected_frames": 16,
     "background_type": "transparent",
-    "difficulty_tags": [],
+    "difficulty_tags": [
+      "skirt",
+      "coat"
+    ],
     "detected_grid": {
       "vlines": 5,
       "hlines": 5

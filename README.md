@@ -1,8 +1,10 @@
 # Sprite Repair
 
-스프라이트시트 **수리** 도구 (MikuChat Lab).
+> **AI 스프라이트 애니메이션 수리 스튜디오 (MikuChat-Lab)**  
+> 📖 **[나무위키식 프로젝트 상세 백과사전 읽기 (`docs/NAMUWIKI.md`)](docs/NAMUWIKI.md)**  
+> 📊 **[실제 GPT 4×4 벤치마크 결과 보고서 (`benchmark/REAL_WORLD_GPT_SPRITESHEET_BENCHMARK.md`)](benchmark/REAL_WORLD_GPT_SPRITESHEET_BENCHMARK.md)**
 
-균등 그리드 절단기가 아닙니다. 그리드 칸은 **시드(seed)** 일 뿐이고, 알파 기반 전경 추출 + 발/루트 앵커 정렬로 프레임을 맞춥니다.
+균등 그리드 절단기가 아닙니다. 그리드 칸은 **시드(seed)** 일 뿐이고, 알파 기반 전경 추출 + 발/루트 앵커 정렬로 프레임을 맞춥니다. Aseprite Studio Pro급 타임라인 및 5종 선택 도구, 인덱스드 팔레트, MaxRects 아틀라스, 그리고 실시간 비전 AI 연동을 지원합니다.
 
 ## 실행
 

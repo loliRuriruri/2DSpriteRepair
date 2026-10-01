@@ -109,8 +109,8 @@ def _border_touch_ratio(img: Image.Image, threshold: int = 64, margin: int = 1) 
 
 def _neighbor_overlap_ratio(rect: dict[str, int], seed: dict[str, int]) -> float:
     """Fraction of crop rect lying outside its own seed cell (neighbor steal hint)."""
-    rx, ry, rw, rh = rect["x"], rect["y"], rect["w"], rect["h"]
-    sx, sy, sw, sh = seed["x"], seed["y"], seed["w"], seed["h"]
+    rx, ry, rw, rh = rect.get("x", 0), rect.get("y", 0), rect.get("width", 0), rect.get("height", 0)
+    sx, sy, sw, sh = seed.get("x", 0), seed.get("y", 0), seed.get("width", 0), seed.get("height", 0)
     ix0, iy0 = max(rx, sx), max(ry, sy)
     ix1, iy1 = min(rx + rw, sx + sw), min(ry + rh, sy + sh)
     inter = max(0, ix1 - ix0) * max(0, iy1 - iy0)

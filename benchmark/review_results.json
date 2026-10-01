@@ -1,0 +1,1693 @@
+{
+  "reviewed_at": "2026-09-20T12:00:00Z",
+  "fixtures": {
+    "gpt_sheet_001": {
+      "prompt_class": "sword_attack",
+      "difficulty_tags": [
+        "short_sword",
+        "cape"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "SCALE_FIX"
+        },
+        "1": {
+          "status": "SCALE_FIX"
+        },
+        "2": {
+          "status": "SCALE_FIX"
+        },
+        "3": {
+          "status": "SCALE_FIX"
+        },
+        "4": {
+          "status": "NEIGHBOR_CONTAMINATION"
+        },
+        "5": {
+          "status": "PALETTE_FIX"
+        },
+        "6": {
+          "status": "PALETTE_FIX"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PALETTE_FIX"
+        },
+        "9": {
+          "status": "PALETTE_FIX"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PALETTE_FIX"
+        },
+        "12": {
+          "status": "SCALE_FIX"
+        },
+        "13": {
+          "status": "SCALE_FIX"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_002": {
+      "prompt_class": "spear_thrust",
+      "difficulty_tags": [
+        "spear",
+        "long_hair"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "SCALE_FIX"
+        },
+        "1": {
+          "status": "PALETTE_FIX"
+        },
+        "2": {
+          "status": "PALETTE_FIX"
+        },
+        "3": {
+          "status": "SCALE_FIX"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "SCALE_FIX"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PALETTE_FIX"
+        },
+        "10": {
+          "status": "SCALE_FIX"
+        },
+        "11": {
+          "status": "SCALE_FIX"
+        },
+        "12": {
+          "status": "SCALE_FIX"
+        },
+        "13": {
+          "status": "PALETTE_FIX"
+        },
+        "14": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 111,
+          "gt_anchor_y": 399
+        },
+        "15": {
+          "status": "SCALE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_003": {
+      "prompt_class": "fire_magic",
+      "difficulty_tags": [
+        "fire",
+        "large_vfx",
+        "imperfect_solid_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "SCALE_FIX"
+        },
+        "1": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 258,
+          "gt_anchor_y": 303
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 92,
+          "gt_anchor_y": 241
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "SCALE_FIX"
+        },
+        "10": {
+          "status": "SCALE_FIX"
+        },
+        "11": {
+          "status": "SCALE_FIX"
+        },
+        "12": {
+          "status": "NEIGHBOR_CONTAMINATION"
+        },
+        "13": {
+          "status": "PALETTE_FIX"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_004": {
+      "prompt_class": "ice_projectile",
+      "difficulty_tags": [
+        "ice",
+        "projectile",
+        "imperfect_solid_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "SCALE_FIX"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "NEIGHBOR_CONTAMINATION"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "SCALE_FIX"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "SCALE_FIX"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "SCALE_FIX"
+        },
+        "10": {
+          "status": "PALETTE_FIX"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "SCALE_FIX"
+        },
+        "13": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 429,
+          "gt_anchor_y": 255
+        },
+        "14": {
+          "status": "SCALE_FIX"
+        },
+        "15": {
+          "status": "SCALE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_005": {
+      "prompt_class": "lightning_beam",
+      "difficulty_tags": [
+        "lightning_beam",
+        "large_vfx",
+        "imperfect_solid_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "SCALE_FIX"
+        },
+        "1": {
+          "status": "SCALE_FIX"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "SCALE_FIX"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "SCALE_FIX"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "NEIGHBOR_CONTAMINATION"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "SCALE_FIX"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "SCALE_FIX"
+        },
+        "12": {
+          "status": "SCALE_FIX"
+        },
+        "13": {
+          "status": "SCALE_FIX"
+        },
+        "14": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 292,
+          "gt_anchor_y": 405
+        },
+        "15": {
+          "status": "SCALE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_006": {
+      "prompt_class": "great_sword_slash",
+      "difficulty_tags": [
+        "great_sword",
+        "large_silhouette_change",
+        "imperfect_solid_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "SCALE_FIX"
+        },
+        "1": {
+          "status": "SCALE_FIX"
+        },
+        "2": {
+          "status": "SCALE_FIX"
+        },
+        "3": {
+          "status": "SCALE_FIX"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "SCALE_FIX"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "NEIGHBOR_CONTAMINATION"
+        },
+        "10": {
+          "status": "NEIGHBOR_CONTAMINATION"
+        },
+        "11": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 136,
+          "gt_anchor_y": 530
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "SCALE_FIX"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "SCALE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_007": {
+      "prompt_class": "hand_to_hand_combo",
+      "difficulty_tags": [
+        "hand_to_hand",
+        "jump",
+        "imperfect_solid_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PALETTE_FIX"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PALETTE_FIX"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "SCALE_FIX"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "PALETTE_FIX"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "SCALE_FIX"
+        },
+        "10": {
+          "status": "SCALE_FIX"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PALETTE_FIX"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PALETTE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_008": {
+      "prompt_class": "explosion_blast",
+      "difficulty_tags": [
+        "large_explosion",
+        "vfx_below_feet",
+        "imperfect_solid_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "SCALE_FIX"
+        },
+        "1": {
+          "status": "SCALE_FIX"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "SCALE_FIX"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "SCALE_FIX"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "NEIGHBOR_CONTAMINATION"
+        },
+        "10": {
+          "status": "PALETTE_FIX"
+        },
+        "11": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 206,
+          "gt_anchor_y": 505
+        },
+        "12": {
+          "status": "SCALE_FIX"
+        },
+        "13": {
+          "status": "SCALE_FIX"
+        },
+        "14": {
+          "status": "SCALE_FIX"
+        },
+        "15": {
+          "status": "SCALE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_009": {
+      "prompt_class": "bow_ranged_shot",
+      "difficulty_tags": [
+        "bow",
+        "projectile",
+        "ground_shadow"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 71,
+          "gt_anchor_y": 290
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 222,
+          "gt_anchor_y": 294
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PALETTE_FIX"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 212,
+          "gt_anchor_y": 289
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 125,
+          "gt_anchor_y": 293
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 92,
+          "gt_anchor_y": 291
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_010": {
+      "prompt_class": "heavy_strike",
+      "difficulty_tags": [
+        "spin",
+        "skirt"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 82,
+          "gt_anchor_y": 253
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "SCALE_FIX"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PALETTE_FIX"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "PALETTE_FIX"
+        },
+        "10": {
+          "status": "PALETTE_FIX"
+        },
+        "11": {
+          "status": "SCALE_FIX"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "SCALE_FIX"
+        },
+        "14": {
+          "status": "SCALE_FIX"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_011": {
+      "prompt_class": "dodge_roll",
+      "difficulty_tags": [
+        "skirt",
+        "coat"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 105,
+          "gt_anchor_y": 296
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_012": {
+      "prompt_class": "projectile_throw",
+      "difficulty_tags": [
+        "coat",
+        "transparent_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 122,
+          "gt_anchor_y": 310
+        },
+        "13": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 136,
+          "gt_anchor_y": 289
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_013": {
+      "prompt_class": "dash_attack",
+      "difficulty_tags": [
+        "transparent_bg",
+        "vfx_below_feet"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 121,
+          "gt_anchor_y": 301
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 116,
+          "gt_anchor_y": 321
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 132,
+          "gt_anchor_y": 295
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_014": {
+      "prompt_class": "spin_attack",
+      "difficulty_tags": [
+        "vfx_below_feet",
+        "large_silhouette_change"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 128,
+          "gt_anchor_y": 280
+        },
+        "3": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 134,
+          "gt_anchor_y": 285
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 166,
+          "gt_anchor_y": 308
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_015": {
+      "prompt_class": "magic_cast",
+      "difficulty_tags": [
+        "large_silhouette_change",
+        "ground_shadow"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 125,
+          "gt_anchor_y": 297
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 136,
+          "gt_anchor_y": 310
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 157,
+          "gt_anchor_y": 295
+        }
+      }
+    },
+    "gpt_sheet_016": {
+      "prompt_class": "heavy_strike",
+      "difficulty_tags": [
+        "ground_shadow",
+        "dash"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 169,
+          "gt_anchor_y": 292
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "SCALE_FIX"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 159,
+          "gt_anchor_y": 267
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_017": {
+      "prompt_class": "dodge_roll",
+      "difficulty_tags": [
+        "dash",
+        "spin"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 163,
+          "gt_anchor_y": 299
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 143,
+          "gt_anchor_y": 299
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_018": {
+      "prompt_class": "projectile_throw",
+      "difficulty_tags": [
+        "spin",
+        "skirt"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 110,
+          "gt_anchor_y": 307
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "SCALE_FIX"
+        },
+        "12": {
+          "status": "SCALE_FIX"
+        },
+        "13": {
+          "status": "SCALE_FIX"
+        },
+        "14": {
+          "status": "SCALE_FIX"
+        },
+        "15": {
+          "status": "SCALE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_019": {
+      "prompt_class": "dash_attack",
+      "difficulty_tags": [
+        "skirt",
+        "coat"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 136,
+          "gt_anchor_y": 272
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 142,
+          "gt_anchor_y": 281
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_020": {
+      "prompt_class": "spin_attack",
+      "difficulty_tags": [
+        "coat",
+        "transparent_bg"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 129,
+          "gt_anchor_y": 300
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_021": {
+      "prompt_class": "magic_cast",
+      "difficulty_tags": [
+        "transparent_bg",
+        "vfx_below_feet"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 170,
+          "gt_anchor_y": 297
+        },
+        "2": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 158,
+          "gt_anchor_y": 298
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_022": {
+      "prompt_class": "heavy_strike",
+      "difficulty_tags": [
+        "vfx_below_feet",
+        "large_silhouette_change"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "SCALE_FIX"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 141,
+          "gt_anchor_y": 296
+        },
+        "11": {
+          "status": "SCALE_FIX"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "SCALE_FIX"
+        }
+      }
+    },
+    "gpt_sheet_023": {
+      "prompt_class": "dodge_roll",
+      "difficulty_tags": [
+        "large_silhouette_change",
+        "ground_shadow"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "SCALE_FIX"
+        },
+        "5": {
+          "status": "SCALE_FIX"
+        },
+        "6": {
+          "status": "SCALE_FIX"
+        },
+        "7": {
+          "status": "SCALE_FIX"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 103,
+          "gt_anchor_y": 279
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_024": {
+      "prompt_class": "projectile_throw",
+      "difficulty_tags": [
+        "ground_shadow",
+        "dash"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "PASS"
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 125,
+          "gt_anchor_y": 285
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_025": {
+      "prompt_class": "dash_attack",
+      "difficulty_tags": [
+        "dash",
+        "spin"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 177,
+          "gt_anchor_y": 271
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_026": {
+      "prompt_class": "spin_attack",
+      "difficulty_tags": [
+        "spin",
+        "skirt"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "PASS"
+        },
+        "1": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 139,
+          "gt_anchor_y": 287
+        },
+        "2": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 160,
+          "gt_anchor_y": 277
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "PASS"
+        }
+      }
+    },
+    "gpt_sheet_027": {
+      "prompt_class": "magic_cast",
+      "difficulty_tags": [
+        "skirt",
+        "coat"
+      ],
+      "sheet_status": "REVIEWED",
+      "manual_minutes": 32.0,
+      "frames": {
+        "0": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 145,
+          "gt_anchor_y": 284
+        },
+        "1": {
+          "status": "PASS"
+        },
+        "2": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 152,
+          "gt_anchor_y": 279
+        },
+        "3": {
+          "status": "PASS"
+        },
+        "4": {
+          "status": "PASS"
+        },
+        "5": {
+          "status": "PASS"
+        },
+        "6": {
+          "status": "PASS"
+        },
+        "7": {
+          "status": "PASS"
+        },
+        "8": {
+          "status": "PASS"
+        },
+        "9": {
+          "status": "PASS"
+        },
+        "10": {
+          "status": "PASS"
+        },
+        "11": {
+          "status": "PASS"
+        },
+        "12": {
+          "status": "PASS"
+        },
+        "13": {
+          "status": "PASS"
+        },
+        "14": {
+          "status": "PASS"
+        },
+        "15": {
+          "status": "ANCHOR_FIX",
+          "gt_anchor_x": 147,
+          "gt_anchor_y": 282
+        }
+      }
+    }
+  }
+}
